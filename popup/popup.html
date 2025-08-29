@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <span class="logo-icon">🧠</span>
+        <h1>Kit Memory</h1>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="enabled" checked>
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <!-- Status -->
+    <div class="status" id="status">
+      <span class="status-dot active"></span>
+      <span class="status-text">Active</span>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-number" id="memoryCount">0</span>
+        <span class="stat-label">Memories</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" id="daysActive">0</span>
+        <span class="stat-label">Days Active</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number" id="lastSync">Never</span>
+        <span class="stat-label">Last Sync</span>
+      </div>
+    </div>
+
+    <!-- Configuration -->
+    <div class="config-section" id="configSection" style="display: none;">
+      <h3>Supabase Configuration</h3>
+      <input type="text" id="supabaseUrl" placeholder="Supabase URL" />
+      <input type="password" id="supabaseKey" placeholder="Supabase Anon Key" />
+      <button id="saveConfig" class="btn-primary">Save Configuration</button>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button id="toggleConfig" class="btn-secondary">
+        <span id="configToggleText">Configure</span>
+      </button>
+      <button id="clearRecent" class="btn-secondary">Clear Last 24h</button>
+      <button id="exportMemories" class="btn-secondary">Export All</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="https://github.com/yourusername/kit-extension" target="_blank" id="github">GitHub</a>
+      <span class="separator">•</span>
+      <a href="#" id="feedback">Feedback</a>
+      <span class="separator">•</span>
+      <span class="version">v0.1.0</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
