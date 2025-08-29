@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const revealBtn = document.createElement('button');
       revealBtn.id = 'revealCredentials';
       revealBtn.className = 'reveal-btn';
-      revealBtn.innerHTML = '👁️ Show Credentials';
+      revealBtn.textContent = '👁️ Show Credentials'; // Safe: Use textContent instead of innerHTML
       revealBtn.title = 'Temporarily reveal stored credentials';
       
       revealBtn.addEventListener('click', async () => {
@@ -107,16 +107,34 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     if (encrypted) {
-      elements.securityStatus.innerHTML = `
-        <span class="security-icon">🔒</span>
-        <span class="security-text">Credentials Encrypted</span>
-      `;
+      // Safe DOM manipulation without innerHTML
+      elements.securityStatus.textContent = ''; // Clear existing content
+      
+      const lockIcon = document.createElement('span');
+      lockIcon.className = 'security-icon';
+      lockIcon.textContent = '🔒';
+      
+      const lockText = document.createElement('span');
+      lockText.className = 'security-text';
+      lockText.textContent = 'Credentials Encrypted';
+      
+      elements.securityStatus.appendChild(lockIcon);
+      elements.securityStatus.appendChild(lockText);
       elements.securityStatus.className = 'security-status secure';
     } else {
-      elements.securityStatus.innerHTML = `
-        <span class="security-icon">⚠️</span>
-        <span class="security-text">No Credentials Stored</span>
-      `;
+      // Safe DOM manipulation without innerHTML
+      elements.securityStatus.textContent = ''; // Clear existing content
+      
+      const warnIcon = document.createElement('span');
+      warnIcon.className = 'security-icon';
+      warnIcon.textContent = '⚠️';
+      
+      const warnText = document.createElement('span');
+      warnText.className = 'security-text';
+      warnText.textContent = 'No Credentials Stored';
+      
+      elements.securityStatus.appendChild(warnIcon);
+      elements.securityStatus.appendChild(warnText);
       elements.securityStatus.className = 'security-status warning';
     }
   }
@@ -343,11 +361,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   function addSecurityWarning() {
     const warning = document.createElement('div');
     warning.className = 'security-warning';
-    warning.innerHTML = `
-      <strong>🔒 Security Notice:</strong> 
-      Your credentials are encrypted using AES-256-GCM. 
-      Never share your API keys with anyone.
-    `;
+    
+    // Safe DOM manipulation without innerHTML
+    const strong = document.createElement('strong');
+    strong.textContent = '🔒 Security Notice: ';
+    
+    const text = document.createTextNode(
+      'Your credentials are encrypted using AES-256-GCM. Never share your API keys with anyone.'
+    );
+    
+    warning.appendChild(strong);
+    warning.appendChild(text);
+    
     document.body.insertBefore(warning, document.body.firstChild);
   }
 

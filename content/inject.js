@@ -1,6 +1,9 @@
 // Content Script for Kit Memory Extension
 // Captures messages and handles prompt enhancement
 
+// Import sanitizer for XSS protection
+import { InputSanitizer } from '../lib/sanitizer.js';
+
 class MemoryCapture {
   constructor() {
     this.detector = new window.KitSiteDetector();
@@ -10,6 +13,7 @@ class MemoryCapture {
     this.lastAssistantMessage = '';
     this.observer = null;
     this.isProcessing = false;
+    this.sanitizer = new InputSanitizer(); // Initialize sanitizer
     
     this.init();
   }
@@ -148,19 +152,22 @@ class MemoryCapture {
   async storeMemory(role, content) {
     if (!content || content.length < 2) return;
     
+    // Sanitize content before storing to prevent XSS
+    const sanitizedContent = this.sanitizer.sanitizeForStorage(content);
+    
     try {
       await chrome.runtime.sendMessage({
         type: 'STORE_MEMORY',
         data: {
           role,
-          content,
+          content: sanitizedContent, // Use sanitized content
           site: this.site,
           url: window.location.href,
           timestamp: new Date().toISOString()
         }
       });
       
-      console.log(`Kit Memory: Stored ${role} message (${content.length} chars)`);
+      console.log(`Kit Memory: Stored ${role} message (${sanitizedContent.length} chars)`);
     } catch (error) {
       console.error('Kit Memory: Failed to store memory:', error);
     }

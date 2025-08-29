@@ -1,7 +1,29 @@
 {
   "permissions": {
     "allow": [
-      "Read(/home/penguinzyue/.claude/**)"
+      "Read(/home/penguinzyue/.claude/**)",
+      "mcp__serena__read_file",
+      "mcp__serena__activate_project",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__list_dir",
+      "mcp__serena__get_symbols_overview",
+      "Read(/home/penguinzyue/.claude/**)",
+      "mcp__serena__create_text_file",
+      "mcp__serena__write_memory",
+      "Bash(git checkout:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(chmod:*)",
+      "Bash(git config:*)",
+      "mcp__serena__replace_regex",
+      "Bash(npm run security:check:*)",
+      "Bash(cd:*)",
+      "Read(/home/penguinzyue/.claude/**)",
+      "Bash(grep:*)",
+      "Bash(./verify-all.sh)"
     ],
     "deny": [],
     "ask": []

@@ -8,10 +8,18 @@
   "scripts": {
     "prepare": "husky install 2>/dev/null || true",
     "pre-commit": "bash .githooks/pre-commit",
-    "test": "echo \"No tests yet - Phase 3\"",
-    "security:check": "grep -r -i 'password\\|api_key\\|secret\\|token' . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv --exclude='*.md' | grep -v 'your_.*_here\\|placeholder\\|example\\|token_count' || echo '✅ No secrets found'"
+    "test": "jest test/",
+    "test:crypto": "jest test/crypto.test.js",
+    "test:xss": "jest test/xss.test.js",
+    "verify": "./verify-all.sh",
+    "security:check": "grep -r -i 'password\\|api_key\\|secret\\|token' . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv --exclude='*.md' | grep -v 'your_.*_here\\|placeholder\\|example\\|token_count' || echo '✅ No secrets found'",
+    "security:innerHTML": "grep -r 'innerHTML' --include='*.js' . --exclude-dir=node_modules --exclude-dir=test || echo '✅ No innerHTML found'",
+    "security:xss": "grep -r 'eval\\|Function(' --include='*.js' . --exclude-dir=node_modules --exclude-dir=test || echo '✅ No eval/Function found'"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "@testing-library/jest-dom": "^6.0.0"
+  },
   "engines": {
     "node": ">=14.0.0"
   },
