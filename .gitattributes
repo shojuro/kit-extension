@@ -1,0 +1,57 @@
+# Git attributes for Kit Memory Extension
+# Ensures consistent line endings and proper file handling
+
+# Default behavior - auto-detect text files and normalize line endings to LF
+* text=auto eol=lf
+
+# Source files - always treat as text with LF line endings
+*.js text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.sql text eol=lf
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+
+# Chrome extension specific
+manifest.json text eol=lf
+
+# Binary files - never modify
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Security - mark sensitive files (for future git-crypt if needed)
+.env filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
+*.pem filter=git-crypt diff=git-crypt
+*.p12 filter=git-crypt diff=git-crypt
+
+# Diff patterns - use appropriate diff drivers
+*.js diff=javascript
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+
+# Export ignore - files to exclude from archive exports
+.github export-ignore
+.githooks export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+.env.example export-ignore
+.editorconfig export-ignore
+.eslintrc* export-ignore
+.prettierrc* export-ignore
+tests/ export-ignore
+docs/ export-ignore

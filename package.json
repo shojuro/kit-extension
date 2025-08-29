@@ -1,0 +1,29 @@
+{
+  "name": "kit-memory-extension",
+  "version": "0.1.0",
+  "description": "Chrome extension providing persistent memory for ChatGPT and Claude across sessions",
+  "private": true,
+  "author": "Shojuro",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install 2>/dev/null || true",
+    "pre-commit": "bash .githooks/pre-commit",
+    "test": "echo \"No tests yet - Phase 3\"",
+    "security:check": "grep -r -i 'password\\|api_key\\|secret\\|token' . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=.venv --exclude='*.md' | grep -v 'your_.*_here\\|placeholder\\|example\\|token_count' || echo '✅ No secrets found'"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shojuro/kit-extension.git"
+  },
+  "keywords": [
+    "chrome-extension",
+    "chatgpt",
+    "claude",
+    "ai-memory",
+    "browser-extension"
+  ]
+}
