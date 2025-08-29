@@ -43,6 +43,12 @@
     "128": "icons/icon128.png"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'none'; connect-src 'self' https://*.supabase.co https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/sanitizer.js", "lib/crypto.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
